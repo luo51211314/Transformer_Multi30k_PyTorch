@@ -18,7 +18,7 @@ class DataLoaderHF():
 
 	def make_dataset(self):
 		# 使用Hugging Face加载Multi30k数据集
-		dataset = load_dataset("bentrevett/multi30k")
+		dataset = load_dataset("/root/autodl-tmp/datasets/multi30k")
 
 		print('Dataset loaded')
 
