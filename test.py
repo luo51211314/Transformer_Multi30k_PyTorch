@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from config import Config
 from other.BLEU import bleu_stats, bleu, get_bleu
+from tqdm import tqdm 
 
 def evaluate(model, valid_iter, criterion, tokenizer):
     model.eval()
@@ -40,14 +41,14 @@ def evaluate(model, valid_iter, criterion, tokenizer):
 def inference(model, test_iter, tokenizer, pad_id):
     bleu = []
     model.eval()
-    for i, batch in enumerate(test_iter):
+    for i, batch in enumerate(tqdm(test_iter, desc="Testing", unit="batch")):
         src = batch['input_ids'].to(Config.device)
         trg = batch['labels'].to(Config.device)
 
         src_mask = model.make_src_mask(src)
         
         decoder_output = torch.full((Config.batch_size, Config.max_len), pad_id)
-        decoder_output[:, 0] = tokenizer.bos_token_id
+        decoder_output[:, 0] = 58101
 
         encoder_output = model.encoder(src, src_mask)
         

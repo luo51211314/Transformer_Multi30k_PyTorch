@@ -17,7 +17,7 @@ class Config:
     adam_eps = 5e-9
     patience = 10
     warmup = 20
-    epoches = 100
+    epoches = 3
     clip = 1.0
     weight_decay = 5e-4
     inf = float('inf')

@@ -1,6 +1,6 @@
 import sys
-sys.path.append('/content/drive/MyDrive/Colab Notebooks/transformer')
-sys.path.append('/content/drive/MyDrive/Colab Notebooks/transformer/other')
+#sys.path.append('/content/drive/MyDrive/Colab Notebooks/transformer')
+#sys.path.append('/content/drive/MyDrive/Colab Notebooks/transformer/other')
 from embedding.TransformerEmbedding import TransformerEmbedding
 from model.Encoder import Encoder
 from model.Decoder import Decoder
@@ -56,13 +56,29 @@ criterion = nn.CrossEntropyLoss(ignore_index=pad_id)
 
 # 运行函数
 def run(total_epoch, best_loss):
+    # 初始化日志记录器
+    logger = TrainerLogger()
+    
     train_losses, test_losses, bleus = [], [], []
     for epoch in range(total_epoch):
         start_time = time.time()
-        train_loss = train(model, train_iter, optimizer, criterion, scheduler, Config.clip)
+        
+        # 训练并获取损失
+        train_loss = train(model, train_iter, optimizer, criterion, scheduler, Config.clip, logger)
         valid_loss, bleu_score = evaluate(model, valid_iter, criterion, tokenizer)
+        
+        # 计算epoch时间
         end_time = time.time()
-
+        epoch_secs = end_time - start_time
+        
+        # 记录日志
+        logger.log_epoch(
+            epoch=epoch,
+            train_loss=train_loss,
+            val_loss=valid_loss,
+            epoch_time=epoch_secs
+        )
+        
         print('Epoch: {0}'.format(epoch))
         print('Train Loss: {0:.3f} | Val Loss: {1:.3f} | BLEU: {2:.3f}'.format(
             train_loss, valid_loss, bleu_score))
@@ -76,10 +92,13 @@ def run(total_epoch, best_loss):
         if valid_loss < best_loss:
             best_loss = valid_loss
             torch.save(model.state_dict(), 'best_model.pt')
-
+    
+    # 关闭日志记录器
+    logger.close()
     return train_losses, test_losses, bleus
 
 if __name__ == '__main__':
+    
     start_time = time.time()
     train_losses, test_losses, bleus = run(Config.epoches, Config.inf)
     end_time = time.time()
@@ -87,7 +106,7 @@ if __name__ == '__main__':
     mins, secs = epoch_time(start_time, end_time)
     print(f"Training completed in {mins}m {secs}s")
     
-    # 测试模型
+    #测试模型
     test_bleu = inference(model, test_iter, tokenizer, pad_id)
     print(f"Test BLEU: {sum(test_bleu) / len(test_bleu):.3f}")
     
@@ -97,7 +116,7 @@ if __name__ == '__main__':
     b = batch['labels'].to(Config.device)
 
     decoder_output = torch.full((Config.batch_size, Config.max_len), pad_id)
-    decoder_output[:, 0] = tokenizer.bos_token_id
+    decoder_output[:, 0] = 58101
 
     src_mask = model.make_src_mask(a)
     model.eval()

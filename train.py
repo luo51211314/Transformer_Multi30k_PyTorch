@@ -2,9 +2,11 @@ import torch
 import torch.nn as nn
 import time
 import gc
+from tqdm import tqdm
 from config import Config
 from torch.optim import AdamW
 from transformers import get_cosine_schedule_with_warmup
+from logger import TrainerLogger
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -29,12 +31,21 @@ def create_scheduler(optimizer, warmup_steps, total_steps):
                                          num_warmup_steps=warmup_steps,
                                          num_training_steps=total_steps)
 
-def train(model, iterator, optimizer, criterion, scheduler, clip):
+def train(model, iterator, optimizer, criterion, scheduler, clip, logger=None):
     model.train()
     epoch_loss = 0
     scaler = torch.amp.GradScaler(device='cuda')
+    
+    # 使用tqdm添加进度条
+    progress_bar = tqdm(
+        enumerate(iterator), 
+        total=len(iterator),
+        desc=f"Training",
+        leave=False,
+        dynamic_ncols=True
+    )
 
-    for i, batch in enumerate(iterator):
+    for i, batch in progress_bar:
         src = batch['input_ids'].to(Config.device, non_blocking=True)
         trg = batch['labels'].to(Config.device, non_blocking=True)
 
@@ -56,8 +67,12 @@ def train(model, iterator, optimizer, criterion, scheduler, clip):
         scheduler.step()
 
         epoch_loss += loss.item()
-        if (i % 100 == 0):
-            print('{0} Loss {1}'.format(i, loss))
+        
+        # 更新进度条描述
+        progress_bar.set_postfix({
+            'loss': f"{loss.item():.4f}",
+            'lr': f"{optimizer.param_groups[0]['lr']:.2e}"
+        })
 
     torch.cuda.empty_cache()
     gc.collect()

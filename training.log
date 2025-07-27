@@ -1,0 +1,3 @@
+2025-07-27 14:00:06,875 - TransformerTrainer - INFO - Epoch 0 - Train Loss: 5.6723 - Val Loss: 5.4169 - Time: 224.42s - CPU Mem: 2284.46MB | GPU alloc: 2284.46MB | GPU cache: 14216.00MB
+2025-07-27 14:02:24,376 - TransformerTrainer - INFO - Epoch 1 - Train Loss: 5.1464 - Val Loss: 6.2496 - Time: 136.12s - CPU Mem: 2284.88MB | GPU alloc: 2284.88MB | GPU cache: 16940.00MB
+2025-07-27 14:04:41,073 - TransformerTrainer - INFO - Epoch 2 - Train Loss: 5.0864 - Val Loss: 6.3942 - Time: 136.69s - CPU Mem: 2285.38MB | GPU alloc: 2285.38MB | GPU cache: 16920.00MB
