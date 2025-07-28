@@ -76,7 +76,8 @@ def run(total_epoch, best_loss):
             epoch=epoch,
             train_loss=train_loss,
             val_loss=valid_loss,
-            epoch_time=epoch_secs
+            epoch_time=epoch_secs,
+            bleu_score=bleu_score
         )
         
         print('Epoch: {0}'.format(epoch))

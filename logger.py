@@ -30,7 +30,7 @@ class TrainerLogger:
             self.logger.addHandler(file_handler)
             self.logger.addHandler(console_handler)
     
-    def log_epoch(self, epoch, train_loss, val_loss, epoch_time, gpu_mem=None):
+    def log_epoch(self, epoch, train_loss, val_loss, epoch_time, bleu_score, gpu_mem=None):
         # 获取内存使用情况
         cpu_mem = f"{torch.cuda.memory_allocated()/1024**2:.2f}MB" if torch.cuda.is_available() else "N/A"
         
@@ -47,6 +47,7 @@ class TrainerLogger:
             f"Train Loss: {train_loss:.4f} - "
             f"Val Loss: {val_loss:.4f} - "
             f"Time: {epoch_time:.2f}s - "
+            f"Blue_score: {bleu_score:.2f} - "
             f"CPU Mem: {cpu_mem}"
             f"{gpu_info}"
         )

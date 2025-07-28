@@ -5,7 +5,7 @@ class Config:
     # 模型参数
     d_model = 512
     max_len = 256
-    batch_size = 50
+    batch_size = 64
     n_head = 8
     n_layers = 6
     ffn_hidden = 2048
@@ -17,7 +17,7 @@ class Config:
     adam_eps = 5e-9
     patience = 10
     warmup = 20
-    epoches = 3
+    epoches = 2
     clip = 1.0
     weight_decay = 5e-4
     inf = float('inf')

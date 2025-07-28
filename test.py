@@ -45,20 +45,24 @@ def inference(model, test_iter, tokenizer, pad_id):
         src = batch['input_ids'].to(Config.device)
         trg = batch['labels'].to(Config.device)
 
-        src_mask = model.make_src_mask(src)
+        # 跳过最后一个 batch 如果不满 Config.batch_size
+        if src.size(0) != Config.batch_size:
+            continue
         
+        src_mask = model.make_src_mask(src)
+
         decoder_output = torch.full((Config.batch_size, Config.max_len), pad_id)
         decoder_output[:, 0] = 58101
 
         encoder_output = model.encoder(src, src_mask)
-        
+
         for j in range(1, Config.max_len):
             trg_mask = model.make_trg_mask(decoder_output)
             output = model.decoder(encoder_output, decoder_output, src_mask, trg_mask)
             output = output.argmax(dim=2)
             output = output[:, j-1]
             decoder_output[:, j] = output
-            
+
         for j in range(Config.batch_size):
             decoder_text = tokenizer.decode(decoder_output[j], skip_special_tokens=True)
             trg_text = tokenizer.decode(trg[j], skip_special_tokens=True)
