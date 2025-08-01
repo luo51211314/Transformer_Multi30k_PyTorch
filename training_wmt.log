@@ -1,0 +1,5 @@
+2025-07-31 23:59:41,403 - TransformerTrainer - INFO - Epoch 0 - Train Loss: 2.5151 - Val Loss: 1.6693 - Time: 10247.43s - Blue_score: 27.99 - CPU Mem: 2282.46MB | GPU alloc: 2282.46MB | GPU cache: 10468.00MB
+2025-08-01 02:46:35,975 - TransformerTrainer - INFO - Epoch 1 - Train Loss: 1.6293 - Val Loss: 1.4057 - Time: 10009.96s - Blue_score: 24.39 - CPU Mem: 2283.15MB | GPU alloc: 2283.15MB | GPU cache: 12126.00MB
+2025-08-01 05:32:07,308 - TransformerTrainer - INFO - Epoch 2 - Train Loss: 1.4770 - Val Loss: 1.3069 - Time: 9926.62s - Blue_score: 32.46 - CPU Mem: 2283.15MB | GPU alloc: 2283.15MB | GPU cache: 12070.00MB
+2025-08-01 08:17:52,168 - TransformerTrainer - INFO - Epoch 3 - Train Loss: 1.3973 - Val Loss: 1.2568 - Time: 9940.11s - Blue_score: 37.38 - CPU Mem: 2283.40MB | GPU alloc: 2283.40MB | GPU cache: 12070.00MB
+2025-08-01 11:03:29,427 - TransformerTrainer - INFO - Epoch 4 - Train Loss: 1.3586 - Val Loss: 1.2507 - Time: 9932.55s - Blue_score: 36.84 - CPU Mem: 2283.40MB | GPU alloc: 2283.40MB | GPU cache: 12070.00MB

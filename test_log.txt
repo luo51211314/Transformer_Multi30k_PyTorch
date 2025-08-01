@@ -1,0 +1,43 @@
+Translation Test Log
+==================================================
+2025-07-31 13:38:27,100 - INFO - Input: Dies ist ein Test | Output: There is a cart. | Reference: This is a Test | BLEU: 0 | Time: 0.73s
+2025-07-31 13:40:24,275 - INFO - Input: Ich liebe dich über alles.​ | Output: The large bull cutting horses. | Reference: I love you above all else. | BLEU: 0 | Time: 0.27s
+2025-07-31 13:40:53,248 - INFO - Input: Ich liebe dich über alles.​ | Output: The large bull cutting horses. | Reference: I love you above all else. | BLEU: 0 | Time: 0.25s
+2025-07-31 13:41:16,462 - INFO - Input: Du bist mein Ein und Alles. | Output: This is their fishing and peace. | Reference: You are my everything. | BLEU: 18.16773113059755 | Time: 0.24s
+2025-07-31 13:42:21,473 - INFO - Input: Ich liebe dich über alles.​ | Output: The large bull cutting horses. | Reference: I love you more than everything. | BLEU: 0 | Time: 0.26s
+2025-07-31 13:43:47,115 - INFO - Input: Ich liebe dich über alles.​ | Output: The gray horse is buildinging. | Reference: I love you above all else | BLEU: 0 | Time: 0.84s
+2025-07-31 13:44:46,261 - INFO - Input: Eine Frau in einem Grauen Pulli und mit einer schwarzen Baseballm\u00fctze steht in einem Gesch\u00e4ft in der Schlange. | Output: A woman wearing a gray and white striped cap is kneeling in a field of bucket rollerleading a basketball sign. | Reference: A woman in a gray sweater and black baseball cap is standing in line at a shop.A wo | BLEU: 14.676992144194257 | Time: 0.75s
+2025-07-31 13:45:10,812 - INFO - Input: Ein Cheerleaderteam macht eine \u00dcbung auf St\u00fchlen. | Output: A cheerleading tricks from a mud covered team is driving down a parking lot. | Reference: A cheerleading team doing a routine on chairs. | BLEU: 43.05972453502898 | Time: 0.52s
+2025-07-31 13:58:56,438 - INFO - Input: Er stürmte aus dem Raum. | Output: Vendors park outside. | Reference: He dashed out of the room. | BLEU: 0 | Time: 1.38s
+2025-07-31 13:59:20,808 - INFO - Input: Er griff nach seiner Tasche und rannte zur Tür. | Output: He is painting the car with three painted on it. | Reference:  He grabbed his bag and rushed to the door. | BLEU: 0 | Time: 0.39s
+2025-07-31 14:00:18,798 - INFO - Input: Ein Kind springt über eine Pfütze. | Output: A child jumps over a pile of puddles. | Reference: A child jumps over a puddle. | BLEU: 73.88005615445904 | Time: 0.37s
+2025-07-31 14:00:47,775 - INFO - Input: Ein Junge klettert auf den Zaun und winkt seiner Mutter. | Output: A boy is hanging up from the flips while others look on. | Reference: A boy climbs onto the fence and waves to his mother. | BLEU: 0 | Time: 0.50s
+2025-07-31 14:01:14,897 - INFO - Input: Der Fluss fließt langsam zwischen den Bergen hindurch. | Output: The dirt mountain snowboards on their gravel. | Reference: The river flows slowly between the mountains. | BLEU: 0 | Time: 0.42s
+2025-07-31 14:01:34,819 - INFO - Input: Die Kinder verstecken sich hinter einem Baum. | Output: The children are playing with a tree behind. | Reference: he children hide behind a tree. | BLEU: 46.05779351596907 | Time: 0.40s
+2025-08-01 10:01:21,773 - ERROR - 程序出错: Error(s) in loading state_dict for Transformer:
+	size mismatch for encoder.emb.poe.pos_encoding: copying a param with shape torch.Size([1, 256, 512]) from checkpoint, the shape in current model is torch.Size([1, 128, 512]).
+	size mismatch for decoder.emb.poe.pos_encoding: copying a param with shape torch.Size([1, 256, 512]) from checkpoint, the shape in current model is torch.Size([1, 128, 512]).
+Traceback (most recent call last):
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/myTest.py", line 156, in <module>
+    model, tokenizer = load_model()
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/myTest.py", line 44, in load_model
+    model.load_state_dict(fixed_state_dict)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2581, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for Transformer:
+	size mismatch for encoder.emb.poe.pos_encoding: copying a param with shape torch.Size([1, 256, 512]) from checkpoint, the shape in current model is torch.Size([1, 128, 512]).
+	size mismatch for decoder.emb.poe.pos_encoding: copying a param with shape torch.Size([1, 256, 512]) from checkpoint, the shape in current model is torch.Size([1, 128, 512]).
+2025-08-01 10:04:40,851 - INFO - Input: Ich werde dich für immer lieben​​. | Output: I will love you for every time. | Reference: ​​I will always love you​​ | BLEU: 25.340864392153822 | Time: 1.66s
+2025-08-01 11:07:26,442 - INFO - Input: Ein Junge klettert auf den Zaun und winkt seiner Mutter. | Output: A boy climbs on the fence and wins his mother. | Reference: A boy climbs onto the fence and waves to his mother | BLEU: 58.31849870653814 | Time: 1.09s
+2025-08-01 11:08:21,206 - INFO - Input: Du bist mein Ein und Alles | Output: You are my One and All | Reference: You are my everything. | BLEU: 0 | Time: 0.12s
+2025-08-01 11:09:28,228 - INFO - Input:  Der Fluss fließt langsam zwischen den Bergen hindurch. | Output: The river flows slowly between the mountains. | Reference: The river flows slowly between the mountains. | BLEU: 100.0 | Time: 0.35s
+2025-08-01 11:11:44,255 - INFO - Input: Guten Morgen! Wie geht es Ihnen? | Output: Good morning, how do you get to know? | Reference: Good morning! How are you? | BLEU: 73.12952129412878 | Time: 0.24s
+2025-08-01 11:11:58,163 - INFO - Input: Vielen Dank für Ihre Hilfe! | Output: Thank you for your help. | Reference: Thank you very much for your help! | BLEU: 42.29485053762257 | Time: 0.15s
+2025-08-01 11:12:14,996 - INFO - Input: Ich möchte ein Stück Apfelkuchen und eine Tasse Kaffee, bitte. | Output: I would like to find a piece of apple cake and a cup of coffee, please. | Reference: I would like a piece of apple cake and a cup of coffee, please. | BLEU: 25.693890788888634 | Time: 0.51s
+2025-08-01 11:12:29,571 - INFO - Input: Entschuldigung, wo ist der nächste Bahnhof? | Output: Excuse where is the next station? | Reference: Excuse me, where is the nearest train station? | BLEU: 30.482151495944322 | Time: 0.23s
+2025-08-01 11:12:47,770 - INFO - Input: Bitte lassen Sie mich wissen, falls Sie weitere Informationen benötigen. | Output: Please let me know if you need more information. | Reference: Please let me know if you need further information. | BLEU: 85.6976518853489 | Time: 0.25s
+2025-08-01 11:13:03,912 - INFO - Input: Alles hat ein Ende, nur die Wurst hat zwei. | Output: Everything has an end, only the sausage has two. | Reference: Everything has an end, only the sausage has two. | BLEU: 100.0 | Time: 0.35s
+2025-08-01 11:14:03,789 - INFO - Input: Wenn ich Zeit hätte, würde ich ein Buch über meine Reisen schreiben. | Output: If I had time I would write a book about my travels. | Reference: If I had time, I would write a book about my travels. | BLEU: 97.59047945423922 | Time: 0.35s
+2025-08-01 11:14:25,695 - INFO - Input: Seine Worte waren wie Dolche, die in mein Herz stießen. | Output: His words were like Dolche, who met my heart. | Reference: His words were like daggers piercing my heart. | BLEU: 41.18672339304717 | Time: 0.32s
+2025-08-01 11:14:49,397 - INFO - Input: Die Bedeutung dieser Forschung wird erst in Zukunft voll verstanden werden. | Output: The importance of this research will only be fully understood in the future. | Reference: The significance of this research will only be fully understood in the future. | BLEU: 83.01654389332877 | Time: 0.40s
+2025-08-01 11:15:08,259 - INFO - Input: Mit seinem scharfen Ton hat er Öl auf die Wogen gegossen. | Output: With his sharp tone, he cast oil on the wool. | Reference: With his sharp tone, he poured oil on troubled waters. | BLEU: 51.99351326018499 | Time: 0.35s
