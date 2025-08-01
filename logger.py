@@ -4,7 +4,7 @@ import time
 from logging.handlers import RotatingFileHandler
 
 class TrainerLogger:
-    def __init__(self, log_file='training.log'):
+    def __init__(self, log_file='training_wmt.log'):
         self.logger = logging.getLogger('TransformerTrainer')
         self.logger.setLevel(logging.INFO)
         

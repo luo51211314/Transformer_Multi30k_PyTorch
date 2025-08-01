@@ -6,6 +6,7 @@ from model.Encoder import Encoder
 from model.Decoder import Decoder
 from model.Transformer import Transformer
 from other.dataloader import DataLoaderHF
+from other.dataloader_wmt import DataLoaderWMT
 from other.BLEU import bleu_stats, bleu, get_bleu
 import torch
 import torch.nn as nn
@@ -20,7 +21,8 @@ for k in ('HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'http_proxy', 'https_proxy',
     os.environ.pop(k, None)
 
 # 初始化数据
-dataloader = DataLoaderHF(Config.model_name, Config.max_len, Config.batch_size, Config.special_token)
+#dataloader = DataLoaderHF(Config.model_name, Config.max_len, Config.batch_size, Config.special_token)
+dataloader = DataLoaderWMT(Config.model_name, Config.max_len, Config.batch_size, Config.special_token) #wmt数据集
 tokenizer = dataloader.tokenizer
 tokenizer.add_special_tokens({'additional_special_tokens':[Config.special_token]})
 voc_size = len(tokenizer.get_vocab())
@@ -29,7 +31,8 @@ train_data, valid_data, test_data = dataloader.make_dataset()
 train_iter, valid_iter, test_iter = dataloader.make_iter(train_data, valid_data, test_data)
 step_per_epoch = len(train_iter)
 total_steps = step_per_epoch * Config.epoches
-warmup_steps = int(total_steps * 0.1)
+warmup_steps = int(total_steps * 0.015)
+print(total_steps, warmup_steps)
 
 # 建立模型
 model = Transformer(pad_idx=pad_id,
@@ -51,6 +54,7 @@ model.apply(initialize_weights)
 
 # 创建优化器和调度器
 optimizer = create_optimizer(model, Config.init_lr, Config.weight_decay, Config.adam_eps)
+print(Config.init_lr)
 scheduler = create_scheduler(optimizer, warmup_steps, total_steps)
 criterion = nn.CrossEntropyLoss(ignore_index=pad_id)
 

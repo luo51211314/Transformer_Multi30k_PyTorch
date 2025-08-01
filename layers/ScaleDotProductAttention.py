@@ -32,5 +32,5 @@ class ScaleDotProductAttention(nn.Module):
             
         score = self.softmax(score)
         v = torch.matmul(score, v)
-        
+
         return v, score

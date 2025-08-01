@@ -4,7 +4,7 @@ import torch
 class Config:
     # 模型参数
     d_model = 512
-    max_len = 256
+    max_len = 128
     batch_size = 64
     n_head = 8
     n_layers = 6
@@ -12,14 +12,14 @@ class Config:
     drop_prob = 0.1
 
     # 优化器参数
-    init_lr = 5e-4
+    init_lr = 1e-4
     factor = 0.9
     adam_eps = 5e-9
     patience = 10
-    warmup = 20
-    epoches = 2
+    warmup = 4000
+    epoches = 5
     clip = 1.0
-    weight_decay = 5e-4
+    weight_decay = 3e-3
     inf = float('inf')
 
     # 设备配置

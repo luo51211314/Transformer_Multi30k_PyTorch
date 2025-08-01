@@ -31,7 +31,8 @@ class DataLoaderHF():
 
 	def tokenize_function(self, example):
 		source_text = [text for text in example['de']]
-		target_text = [self.sos_token + text for text in example['en']]
+		#target_text = [self.sos_token + text for text in example['en']]
+		target_text = [text for text in example['en']]
 		
 		input_ids = self.tokenizer(source_text, padding="max_length", truncation=True, max_length=self.max_len)['input_ids']
 		labels = self.tokenizer(target_text, padding='max_length', truncation=True, max_length=self.max_len)['input_ids']
