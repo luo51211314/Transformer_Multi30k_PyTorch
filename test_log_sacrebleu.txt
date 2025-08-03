@@ -1,0 +1,53 @@
+2025-08-01 12:52:06,007 - ERROR - Error: 'Transformer' object has no attribute 'config'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 105, in <module>
+    interactive_test()
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 90, in interactive_test
+    eval_result = evaluator.evaluate_all(
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/other/BLEU_PPL.py", line 52, in evaluate_all
+    "ppl": self.calculate_ppl(" ".join(hypothesis)) if self.ppl_model else None,
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/other/BLEU_PPL.py", line 30, in calculate_ppl
+    max_length = self.ppl_model.config.n_positions
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1928, in __getattr__
+    raise AttributeError(
+AttributeError: 'Transformer' object has no attribute 'config'
+2025-08-01 12:56:05,618 - ERROR - Error: Transformer.forward() got an unexpected keyword argument 'labels'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 105, in <module>
+    interactive_test()
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 90, in interactive_test
+    eval_result = evaluator.evaluate_all(
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/other/BLEU_PPL.py", line 53, in evaluate_all
+    "ppl": self.calculate_ppl(" ".join(hypothesis)) if self.ppl_model else None,
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/other/BLEU_PPL.py", line 43, in calculate_ppl
+    outputs = self.ppl_model(input_ids, labels=target_ids)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+TypeError: Transformer.forward() got an unexpected keyword argument 'labels'
+2025-08-01 13:41:36,400 - INFO - Input: Mit seinem scharfen Ton hat er Öl auf die Wogen gegossen. | Output: With its sharp tone, he cast oil on the woeves. | BLEU: 27.09 | PPL: 6387699.01 | Time: 1.02s
+2025-08-01 13:46:40,576 - INFO - Input: Seine Worte waren wie Dolche, die in mein Herz stießen. | Output: His words were like Dolche, who had come to my heart. | BLEU: 27.97 | PPL: 24022585.22 | Time: 1.07s
+2025-08-01 13:47:05,490 - INFO - Input: Wenn ich Zeit hätte, würde ich ein Buch über meine Reisen schreiben. | Output: If I had time, I would write a book about my travels. | BLEU: 100.00 | PPL: 35897852.07 | Time: 0.40s
+2025-08-01 13:47:30,478 - INFO - Input: Bitte lassen Sie mich wissen, falls Sie weitere Informationen benötigen. | Output: Please let me know if you need more information. | BLEU: 70.71 | PPL: 99801366.13 | Time: 0.28s
+2025-08-01 14:20:38,257 - ERROR - Error: local variable 'avg_log_prob' referenced before assignment
+Traceback (most recent call last):
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 135, in <module>
+    interactive_test()
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 113, in interactive_test
+    translated_text, ppl = translate_with_ppl(model, tokenizer, src_text)
+  File "/root/autodl-tmp/code/Transformer_Multi30k_PyTorch/mytest2.py", line 91, in translate_with_ppl
+    print(valid_tokens, avg_log_prob, total_log_prob)
+UnboundLocalError: local variable 'avg_log_prob' referenced before assignment
+2025-08-01 14:32:03,944 - INFO - Input: Entschuldigung, wo ist der nächste Bahnhof? | Output: Excuse where is the next station? | BLEU: 100.00 | PPL: 1.47 | Time: 0.95s
+2025-08-01 14:32:31,990 - INFO - Input: Guten Morgen! Wie geht es Ihnen? | Output: I think it's a good idea to find a way to help you find the right place to enjoy the city. | BLEU: 1.73 | PPL: 3.14 | Time: 0.68s
+2025-08-01 14:33:13,179 - INFO - Input: Die Bedeutung dieser Forschung wird erst in Zukunft voll verstanden werden. | Output: The importance of this research will only be fully understood in the future. | BLEU: 85.55 | PPL: 1.16 | Time: 0.42s
+2025-08-01 14:33:47,136 - INFO - Input: Ich werde dich für immer lieben​​. | Output: I will love you forever . | BLEU: 9.65 | PPL: 1.35 | Time: 0.19s
+2025-08-01 18:15:18,892 - INFO - Input: Obwohl das Wetter heute sehr schön ist und die Sonne hell scheint, habe ich leider keine Zeit, um im Park spazieren zu gehen, weil ich noch viele wichtige Aufgaben erledigen muss | Output: Although the weather is now very beautiful and the sun seems bright, I have no time to walk in park because I have to do many important tasks. | BLEU: 24.49 | PPL: 1.29 | Time: 1.60s
+2025-08-01 18:17:30,632 - INFO - Input: Durch den Einsatz von künstlicher Intelligenz und maschinellem Lernen können komplexe Datenmuster in Echtzeit analysiert werden, was die Entscheidungsfindung in der Medizin revolutioniert. | Output: By using artificial intelligence and machine learning, complex data patterns can be analyzed in real time, revolutionising decision-making in medicine. | BLEU: 74.74 | PPL: 1.18 | Time: 0.93s
+2025-08-01 18:18:19,024 - INFO - Input: Durch den Einsatz von künstlicher Intelligenz in der Medizin können Ärzte präzisere Diagnosen stellen und individuelle Behandlungspläne für Patienten entwickeln, was die Therapieergebnisse signifikant verbessert. | Output: By using artificial intelligence in medicine, doctors can set more precise diagnostics and develop individual treatment plans for patients, which significantly improves the results of therapy. | BLEU: 43.71 | PPL: 1.26 | Time: 1.24s
+2025-08-01 18:18:50,739 - INFO - Input: Moderne Solarzellen mit einem Wirkungsgrad von über 25% ermöglichen die effiziente Umwandlung von Sonnenenergie in Strom, selbst bei geringer Sonneneinstrahlung in nördlichen Regionen. | Output: Modern solar cells with over 25% efficiency allows efficient conversion of solar energy into electricity, even if smaller solar radiation is in northern regions. | BLEU: 48.39 | PPL: 1.34 | Time: 1.08s
+2025-08-01 18:19:12,147 - INFO - Input: Quantencomputer, die auf den Prinzipien der Quantenmechanik basieren, lösen komplexe Optimierungsprobleme in Sekunden, für die klassische Supercomputer Jahre benötigen würden. | Output: Quarry computers based on the principles of quantum mechanics resolve complex optimization problems in seconds, which would require the classic supercomputer years. | BLEU: 38.91 | PPL: 1.24 | Time: 1.00s
+2025-08-01 18:20:31,205 - INFO - Input: Angesichts der zunehmenden Spannungen zwischen den Mitgliedstaaten über die Reform der gemeinsamen Agrarpolitik und der drohenden Blockade durch Polen und Ungarn steht die Europäische Union vor einer ihrer tiefsten Vertrauenskrisen seit der Brexit-Ära, was die dringend benötigte Solidarität in der Energie- und Flüchtlingsfrage weiter untergräbt. | Output: Given the increased tension between the Member States on the reform of the common agricultural policy and the threatening blockade by Poland and Hungary, the European Union is facing one of the most deeply needed crises of confidence since the Brevay era, which is continuing to undermine the urgently needed solidarity in the energy and refugee | BLEU: 32.27 | PPL: 1.29 | Time: 2.17s
+2025-08-01 18:21:10,360 - INFO - Input: Der alarmierende Aufstieg der AfD in den Umfragen, die mittlerweile in drei ostdeutschen Bundesländern als stärkste Kraft gelistet wird, zwingt die etablierten Parteien zu einer schmerzhaften Selbstreflexion über ihre gescheiterte Integrationspolitik und den Umgang mit sozialer Ungleichheit, während gleichzeitig die Gefahr einer Normalisierung rechtsextremer Rhetorik wächst. | Output: The alarming rise of Afghan into the polls, which now being listed in three eastern German states as the strongest force, is forcing the established parties to painful self-reflection over their failed integration policies and the way in which social inequality policy is treated, while the risk of normalization is growing. | BLEU: 36.78 | PPL: 1.43 | Time: 2.06s
+2025-08-01 18:21:33,653 - INFO - Input: Die Entscheidung der Ampel-Koalition, den Ausstieg aus der Kohleenergie bis 2038 beizubehalten anstatt ihn – wie von Klimaaktivisten gefordert – auf 2030 vorzuziehen, offenbart nicht nur einen eklatanten Widerspruch zu den eigenen Klimazielen, sondern auch die Macht der Industrielobby, die trotz der jüngsten Flutkatastrophen weiterhin Einfluss auf die Gesetzgebung nimmt. | Output: The decision of the light coalition to keep the exit from coal energy to 2038, rather than prefer it – as climate activists demand – to 2030, not only reveals a latant contradiction to the own climate objectives, but also the power of the industry to continue to pressure on the legislation, which continues to influence the last floods. | BLEU: 11.57 | PPL: 1.55 | Time: 2.11s
